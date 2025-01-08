@@ -1,0 +1,29 @@
+% Faits
+homme(assim).
+homme(vincent).
+homme(kevin).
+homme(enzo).
+
+femme(zoe).
+femme(lea).
+
+parent(assim, vincent).  
+parent(assim, kevin).    
+parent(vincent, enzo).     
+parent(vincent, lea).   
+parent(zoe, lea).    
+
+frere_soeur(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.    % X\Y = différents
+
+oncle_tante(X, Y) :-
+    parent(Z, Y),         % Z est le parent de Y
+    frere_soeur(X, Z).    % X est le frère ou la sœur de Z
+
+
+
+?- oncle_tante(kevin, enzo).
+true
+
+
+?- oncle_tante(X, lea).
+X = kevin ;
