@@ -1,5 +1,5 @@
 % Règle : 
-element_present(X, [X | _]).       % base : X est premier
+element_present(X, [X | _]).  
 element_present(X, [_ | Queue]) :- % récursif : chercher dans la queue
     element_present(X, Queue).
 
