@@ -1,0 +1,19 @@
+% Faits
+homme(jacques).
+homme(pierre).
+homme(marc).
+homme(paul).
+
+femme(marie).
+femme(sophie).
+
+parent(jacques, marc).   % Jacques est le parent de Marc
+parent(marc, sophie).    % Marc est le parent de Sophie
+parent(marie, sophie).   % Marie est aussi un parent de Sophie
+
+% Règles
+père(X, Y) :- homme(X), parent(X, Y).
+mère(X, Y) :- femme(X), parent(X, Y).
+grand_parent(X, Y) :- parent(X, Z), parent(Z, Y).
+frere_ou_soeur(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+a_des_enfants(X) :- parent(X, _).
