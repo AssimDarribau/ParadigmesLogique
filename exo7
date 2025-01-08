@@ -1,0 +1,14 @@
+% Règle : 
+element_present(X, [X | _]).       % base : X est premier
+element_present(X, [_ | Queue]) :- % récursif : chercher dans la queue
+    element_present(X, Queue).
+
+% Tests :
+% ?- element_present(marie, [pierre, marie, paul]).  % Vérifie si Marie est présente
+% true.
+
+% ?- element_present(jacques, [pierre, marie, paul]). % Vérifie si Jacques est présent
+% false.
+
+% ?- element_present(paul, [pierre, marie, paul]).  % Vérifie si Paul est présent
+% true.
